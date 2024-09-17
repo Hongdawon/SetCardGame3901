@@ -49,7 +49,7 @@ cards.forEach((card) => {
 
 // Helper function to check if an attribute forms a valid set 
 function sameOrDifferent(attr1, attr2, attr3){
-  return (attr1 === attr2 && attr2 === attr3) || (attr1 != attr2 && attr1 !== attr3 && attr2 !== attr2);
+  return (attr1 === attr2 && attr2 === attr3) || (attr1 !== attr2 && attr1 !== attr3 && attr2 !== attr3);
 }
 
 // Combines these checks for all four attributes. 
