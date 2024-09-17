@@ -105,7 +105,7 @@ let visibleCards = [];
 // Function to deal cards for initial 12 cards
 
 function dealCards(){
-  for(let i = 0; i , 12; i++){
+  for(let i = 0; i < 12; i++){
     visibleCards.forEach(cards.pop());
   }
   console.log("Dealt Initial cards: ");
