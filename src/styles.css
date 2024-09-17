@@ -1,11 +1,11 @@
 .header {
-    background-color: #0e61a5;
+    background-color: #4e34e4;
     color: rgb(205, 227, 255);
     text-align: center;
     padding: 20px;
 }
 .set-button {
-    background-color: #4CAF50; 
+    background-color: #39a83c; 
     color: white; 
     border: none; 
     padding: 15px 32px; 
@@ -16,5 +16,38 @@
     margin: 10px 5px; 
     cursor: pointer; 
     border-radius: 5px; 
-    
 }
+button:active {
+    background-color: #0d56dd; 
+    transform: scale(0.98);
+}
+
+
+.ins-section {
+    background-color: #f9f9f9; 
+    border: 2px solid #0b55dd; 
+    border-radius: 10px; 
+    padding: 20px; 
+    max-width: 600px; 
+    margin: 20px auto; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  
+  .ins-section h2 {
+    font-size: 24px;
+    color: #000000; 
+    text-align: center; 
+    margin-bottom: 15px; 
+  }
+  
+  
+  .ins-text {
+    font-size: 19px; 
+    line-height: 1.6;/
+    color: #555; /
+    margin-bottom: 10px;
+    text-align: left; 
+  }
+  
+  
