@@ -3,7 +3,7 @@ class Card {
     this.number = number;
     this.color = color;
     this.fill = fill;
-    this.shape = shape;
+    this.shape = shape; //zak
   }
 
   imgname() {
