@@ -18,7 +18,7 @@
 }
 
 .set-button {
-    background-color: #39a83c; 
+    background-color: #fc5959; 
     color: white; 
     border: none; 
     padding: 15px 32px; 
@@ -30,9 +30,22 @@
     cursor: pointer; 
     border-radius: 5px; 
 }
+.hint-button {
+  background-color: #5ef89e; 
+  color: white; 
+  border: none; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 10px 5px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+}
 button:active {
     background-color: #0d56dd; 
-    transform: scale(0.98);
+    transform: scale(1.1);
 }
 
 
