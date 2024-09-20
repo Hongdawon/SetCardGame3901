@@ -90,7 +90,7 @@ button:active {
     background-color: white;
     display: flex;
     height: 150px;
-    width: 150px;
+    width: 250px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
