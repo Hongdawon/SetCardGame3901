@@ -65,14 +65,15 @@ button:active {
   
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 150px);
+    grid-template-columns: repeat(4, 150px); /*4 columns */
+    grid-template-rows: repeat(3, 150px); /* 3 rows */
     grid-gap: 20px;
   }
 
   .grid-item{
-    background-color: cornsilk;
-    height: 100px;
-    width: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
   }
-  
