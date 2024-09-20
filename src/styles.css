@@ -95,6 +95,10 @@ button:active {
   cursor: pointer;
 }
 
+.selected-item {
+  background-color: red;
+}
+
 img {
   height: 60px;
   width: 120px;

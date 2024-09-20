@@ -40,13 +40,6 @@ function shuffleArray(array) {
 
 shuffleArray(cards);
 
-//printing the cards to console
-let j = 1;
-cards.forEach((card) => {
-  console.log(j + " " + card.imgname());
-  j++;
-});
-
 // Helper function to check if an attribute forms a valid set
 function sameOrDifferent(attr1, attr2, attr3) {
   return (
@@ -97,25 +90,32 @@ function updateScore(points) {
 }
 
 let visibleCards = [];
+let selectedCards = [];
 
 // Function to deal cards for initial 12 cards
-
 function dealCards() {
   for (let i = 1; i <= 12; i++) {
     var card = cards.pop();
-    console.log(card.imgname());
     visibleCards.push(card);
-    console.log("../img/" + card.imgname() + ".png");
     document.getElementById("card-" + i).innerHTML =
       `
       <img class="card-img" src="../img/` +
       card.imgname() +
       `.png" />`;
   }
-  console.log("Dealt Initial cards: ");
-  visibleCards.forEach((card, index) =>
-    console.log("${index + 1}: ${card.imgname()}")
-  );
+}
+
+function selectCard(cardNum) {
+  //add select class to selected card and add card number to array
+  document.getElementById("card-" + cardNum).classList =
+    "grid-item selected-item";
+  selectedCards.push(cardNum);
+
+  //remove oldest card and select class if needed
+  if (selectedCards.length > 3) {
+    var oldCard = selectedCards.shift();
+    document.getElementById("card-" + oldCard).classList = "grid-item";
+  }
 }
 
 // Function to replace the identified set with new cards
