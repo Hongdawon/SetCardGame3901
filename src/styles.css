@@ -18,7 +18,7 @@
 }
 
 .set-button {
-    background-color: #39a83c; 
+    background-color: #fc5757; 
     color: white; 
     border: none; 
     padding: 15px 32px; 
@@ -30,9 +30,22 @@
     cursor: pointer; 
     border-radius: 5px; 
 }
+.hint-button {
+  background-color: #13fa60; 
+  color: white; 
+  border: none; 
+  padding: 15px 32px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 10px 5px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+}
 button:active {
     background-color: #0d56dd; 
-    transform: scale(0.98);
+    transform: scale(1.1);
 }
 
 
@@ -65,12 +78,15 @@ button:active {
   
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 150px); /*4 columns */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
     grid-template-rows: repeat(3, 150px); /* 3 rows */
-    grid-gap: 10px;
+    gap: 10px; 
+    width: 100%; 
+    max-width: 600px; 
+    margin: 0 auto; 
   }
-
-  .grid-item{
+  
+  .grid-item {
     background-color: white;
     display: flex;
     height: 150px;
@@ -78,7 +94,11 @@ button:active {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    border: 1px solid #000;
+     
   }
+  
+  
 
  /* .grid-item{
     max-width: 80%;
