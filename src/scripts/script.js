@@ -67,7 +67,7 @@ function startTimer() {
   timerInterval = setInterval(() => {
     if (timeRemaining > 0) {
       timeRemaining--;
-      document.getElementById("timerDisplay").innerHTML = timeRemainingl
+      document.getElementById("timerDisplay").innerHTML = timeRemaining;
     } else {
       // Stops Timer
       clearInterval(timerInterval);
