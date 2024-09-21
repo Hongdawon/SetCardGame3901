@@ -68,7 +68,7 @@ function startTimer() {
     if (timeRemaining > 0) {
       timeRemaining--;
       // May need to be altered when HTML is added
-      console.log("Time Remaining: ${timeRemaining} seconds");
+      console.log(`Time Remaining: ${timeRemaining} seconds`);
     } else {
       // Stops Timer
       clearInterval(timerInterval);
@@ -105,21 +105,29 @@ function dealCards() {
   }
 }
 
+//Function to handle card click
 function selectCard(cardNum) {
-  //add select class to selected card and add card number to array
-  document.getElementById("card-" + cardNum).classList =
-    "grid-item selected-item";
-  selectedCards.push(cardNum);
+  //DESELECT
+  if (selectedCards.includes(cardNum)) {
+    selectedCards.splice(selectedCards.indexOf(cardNum), 1);
+    document.getElementById("card-" + cardNum).classList = "grid-item";
+  }
+  //SELECT
+  else {
+    //add select class to selected card and add card number to array
+    document.getElementById("card-" + cardNum).classList =
+      "grid-item selected-item";
+    selectedCards.push(cardNum);
 
-  //remove oldest card and select class if needed
-  if (selectedCards.length > 3) {
-    var oldCard = selectedCards.shift();
-    document.getElementById("card-" + oldCard).classList = "grid-item";
+    //remove oldest card and select class if needed
+    if (selectedCards.length > 3) {
+      var oldCard = selectedCards.shift();
+      document.getElementById("card-" + oldCard).classList = "grid-item";
+    }
   }
 }
 
 // Function to replace the identified set with new cards
-
 function replaceCards(card1, card2, card3) {
   // Remove the three cards that form a valid set from visiblecards
   visibleCards = visibleCards.filter(
