@@ -1,3 +1,4 @@
+/* General styles for the heading */
 .header {
   background: linear-gradient(135deg, #20165a, #8382eb);
   color: rgb(151, 191, 243);
@@ -10,12 +11,15 @@
   font-size: 24px;
   letter-spacing: 1px;
   margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
 }
 
 .header:hover {
   background: linear-gradient(135deg, #8382eb, #20165a);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Timer styles */
 .timer {
   font-size: 30px;
   color: black;
@@ -29,37 +33,41 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Button styles */
 .set-button {
   background-color: #fc5757;
   color: white;
   border: none;
   padding: 15px 32px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 10px 5px;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
+
 .hint-button {
   background-color: #13fa60;
   color: white;
   border: none;
   padding: 15px 32px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 10px 5px;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
+
 button:active {
   background-color: #0d56dd;
   transform: scale(1.1);
 }
 
+/* Styles for the instruction section */
 .ins-section {
   background-color: #f9f9f9;
   border: 2px solid #0b55dd;
@@ -85,16 +93,18 @@ button:active {
   text-align: left;
 }
 
+/* Grid container for cards */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-template-rows: repeat(3, 150px); /* 3 rows */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 150px);
   gap: 10px;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
 }
 
+/* Styles for each card item */
 .grid-item {
   background-color: white;
   display: flex;
@@ -103,26 +113,33 @@ button:active {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid #000;
+  border: 2px solid #000;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Selected cards will have a glowing blue outline */
 .selected-item {
-  background-color: red;
+  background-color: #f0f8ff;
+  border: 2px solid #00bfff;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
 }
 
-img {
-  height: 80px;
-  width: 160px;
+/* Hint-highlighted cards will have a dashed yellow outline */
+.hint-highlight {
+  background-color: #ffffe0;
+  border: 2px dashed #ffeb3b;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.8);
 }
 
+/* Hover effect for the cards */
+.grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Flex container for buttons */
 .flex-container {
   display: flex;
   justify-content: center;
 }
-
-/* .grid-item{
-    max-width: 80%;
-    max-height: 80%;
-  }
-*/
