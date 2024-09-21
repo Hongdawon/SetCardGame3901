@@ -16,6 +16,18 @@
   background: linear-gradient(135deg, #8382eb, #20165a);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+.timer {
+  font-size: 30px;
+  color: black;
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  max-width: 100px;
+  font-weight: normal;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 .set-button {
   background-color: #fc5757;

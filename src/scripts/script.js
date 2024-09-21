@@ -3,7 +3,7 @@ class Card {
     this.number = number;
     this.color = color;
     this.fill = fill;
-    this.shape = shape; //za
+    this.shape = shape; 
   }
 
   imgname() {
@@ -62,17 +62,16 @@ function isSet(card1, card2, card3) {
 let timeRemaining = 60;
 let timerInterval;
 
-// Timer Implementation
+// Timer Implementation updated
 function startTimer() {
   timerInterval = setInterval(() => {
     if (timeRemaining > 0) {
       timeRemaining--;
-      // May need to be altered when HTML is added
-      console.log("Time Remaining: ${timeRemaining} seconds");
+      document.getElementById("timerDisplay").innerHTML = timeRemaining;
     } else {
       // Stops Timer
       clearInterval(timerInterval);
-      // // May need to be altered when HTML is added
+      document.getElementById("timerDisplay").innerHTML = "Time's up!";
       console.log("Time's up! Round over.");
     }
   }, 1000);
