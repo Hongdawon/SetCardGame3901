@@ -113,7 +113,7 @@ button:active {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 2px solid #000;
+  border: 3px solid #000;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -121,14 +121,14 @@ button:active {
 /* Selected cards will have a glowing blue outline */
 .selected-item {
   background-color: #f0f8ff;
-  border: 2px solid #00bfff;
+  border: 4px solid #00bfff;
   box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
 }
 
 /* Hint-highlighted cards will have a dashed yellow outline */
 .hint-highlight {
   background-color: #ffffe0;
-  border: 2px dashed #ffeb3b;
+  border: 4px dashed #ffeb3b;
   box-shadow: 0 0 10px rgba(255, 235, 59, 0.8);
 }
 
