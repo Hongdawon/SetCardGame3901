@@ -3,7 +3,7 @@ class Card {
     this.number = number;
     this.color = color;
     this.fill = fill;
-    this.shape = shape; 
+    this.shape = shape;
   }
 
   imgname() {
@@ -159,23 +159,25 @@ function checkAndUpdate(card1, card2, card3) {
 }
 
 // Generates a hint by finding a valid set
-function generateHint(){
-  for(let i = 0; i < visibleCards.length - 2; i++){
-    for(let j = i + 1; j < visibleCards.length - 1; j++){
-      for(let k = j + 1; k < visibleCards.length - 1; k++){
-        let card1 = visibleCards[i];
-        let card2 = visibleCards[i];
-        let card3 = visibleCards[i];
+function generateHint() {
+  for (let i = 0; i < visibleCards.length - 2; i++) {
+    for (let j = i + 1; j < visibleCards.length - 1; j++) {
+      for (let k = j + 1; k < visibleCards.length - 1; k++) {
+        if (i != j && j != k && i != k) {
+          let card1 = visibleCards[i];
+          let card2 = visibleCards[j];
+          let card3 = visibleCards[k];
 
-        //Check if the three cards form a valid set
-
-        if(isSet(card1,card2,card3)){
-          console.log("Hint: One card involved in a set is card " + (i+1));
-          // Highlight the first card in the valid set as a hint 
-          document.getElementById("card-" + (i+1)).classList.add("hint-highlight");
-          return;// Exit after finding the first valid set 
+          //Check if the three cards form a valid set
+          if (isSet(card1, card2, card3)) {
+            console.log("Hint: One card involved in a set is card " + (i + 1));
+            // Highlight the first card in the valid set as a hint
+            document
+              .getElementById("card-" + (i + 1))
+              .classList.add("hint-highlight");
+            return; // Exit after finding the first valid set
+          }
         }
-
       }
     }
   }
