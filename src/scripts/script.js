@@ -158,5 +158,30 @@ function checkAndUpdate(card1, card2, card3) {
   }
 }
 
+// Generates a hint by finding a valid set
+function generateHint(){
+  for(let i = 0; i < visibleCards.length - 2; i++){
+    for(let j = i + 1; j < visibleCards.length - 1; j++){
+      for(let k = j + 1; k < visibleCards.length - 1; k++){
+        let card1 = visibleCards[i];
+        let card2 = visibleCards[i];
+        let card3 = visibleCards[i];
+
+        //Check if the three cards form a valid set
+
+        if(isSet(card1,card2,card3)){
+          console.log("Hint: One card involved in a set is card " + (i+1));
+          // Highlight the first card in the valid set as a hint 
+          document.getElementById("card-" + (i+1)).classList.add("hint-highlight");
+          return;// Exit after finding the first valid set 
+        }
+
+      }
+    }
+  }
+  // If no set is found, log the information
+  console.log("No valid sets found. ");
+}
+
 // starting the game by dealing the initial cards
 dealCards();
