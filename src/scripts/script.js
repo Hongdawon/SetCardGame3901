@@ -182,6 +182,8 @@ function generateHint(){
   // If no set is found, log the information
   console.log("No valid sets found. ");
 }
+// Event listener for the hint button
+document.getElementById("hint-button").addEventListener("click", generateHint);
 
 // starting the game by dealing the initial cards
 dealCards();
