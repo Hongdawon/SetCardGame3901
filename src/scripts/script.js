@@ -176,7 +176,7 @@ function checkAndUpdate() {
 function generateHint() {
   for (let i = 0; i < visibleCards.length - 2; i++) {
     for (let j = i + 1; j < visibleCards.length - 1; j++) {
-      for (let k = j + 1; k < visibleCards.length - 1; k++) {
+      for (let k = j + 1; k < visibleCards.length; k++) {
         if (i != j && j != k && i != k) {
           let card1 = visibleCards[i];
           let card2 = visibleCards[j];
