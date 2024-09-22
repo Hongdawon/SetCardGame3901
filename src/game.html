@@ -13,12 +13,13 @@
       <h1 class="header">Set Card Game</h1>
     </div>
 
-     <!-- Timer Display -->
+    <!-- Timer Display -->
 
-     <div class="timer" id="timerDisplay">00:00</div>
+    <div class="timer" id="timerDisplay">00:00</div>
 
     <!--Grid (4 by 3- 12 items total)-->
     <div class="grid-container">
+      <div id="card-0" class="grid-item" onclick="selectCard(0)"></div>
       <div id="card-1" class="grid-item" onclick="selectCard(1)"></div>
       <div id="card-2" class="grid-item" onclick="selectCard(2)"></div>
       <div id="card-3" class="grid-item" onclick="selectCard(3)"></div>
@@ -30,12 +31,13 @@
       <div id="card-9" class="grid-item" onclick="selectCard(9)"></div>
       <div id="card-10" class="grid-item" onclick="selectCard(10)"></div>
       <div id="card-11" class="grid-item" onclick="selectCard(11)"></div>
-      <div id="card-12" class="grid-item" onclick="selectCard(12)"></div>
     </div>
 
     <!-- Button  -->
     <div class="flex-container">
-      <button id="button" class="set-button">Set!</button>
+      <button id="button" class="set-button" onclick="checkAndUpdate()">
+        Set!
+      </button>
       <button id="hint-button" class="hint-button">Hint?</button>
     </div>
 

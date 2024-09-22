@@ -93,7 +93,7 @@ let selectedCards = [];
 
 // Function to deal cards for initial 12 cards
 function dealCards() {
-  for (let i = 1; i <= 12; i++) {
+  for (let i = 0; i < 12; i++) {
     var card = cards.pop();
     visibleCards.push(card);
     document.getElementById("card-" + i).innerHTML =
@@ -127,31 +127,45 @@ function selectCard(cardNum) {
 }
 
 // Function to replace the identified set with new cards
-function replaceCards(card1, card2, card3) {
-  // Remove the three cards that form a valid set from visiblecards
-  visibleCards = visibleCards.filter(
-    (card) => card !== card1 && card !== card2 && card !== card3
-  );
-
-  // Add three new cards from the deck if available
+function replaceCards() {
+  // Remove old cards and add three new cards from the deck if available
   for (let i = 0; i < 3; i++) {
     if (cards.length > 0) {
-      visibleCards.push(cards.pop());
+      var newCard = cards.pop();
+      var index = selectedCards[i];
+      //put images on page
+      document.getElementById("card-" + index).innerHTML =
+        `
+      <img class="card-img" src="../img/` +
+        newCard.imgname() +
+        `.png" />`;
+      //remove old card from visible cards and add new at same index
+      visibleCards.splice(selectedCards[i], 1, newCard);
+      //remove select class
+      document.getElementById("card-" + index).classList = "grid-item";
     }
   }
+  selectedCards = [];
 
   console.log("New cards dealt after set identified: ");
   visibleCards.forEach((card, index) =>
-    console.log("${index + 1}: ${card.imgname()}")
+    console.log(`${index + 1}: ${card.imgname()}`)
   );
 }
 
 // Checks if selected cards form a set and updates the score
-function checkAndUpdate(card1, card2, card3) {
-  if (isSet(card1, card2, card3)) {
+function checkAndUpdate() {
+  if (
+    selectedCards.length == 3 &&
+    isSet(
+      visibleCards[selectedCards[0]],
+      visibleCards[selectedCards[1]],
+      visibleCards[selectedCards[2]]
+    )
+  ) {
     updateScore(1);
     console.log("Correct set! Score increased. ");
-    replaceCards(card1, card2, card3);
+    replaceCards();
   } else {
     updateScore(-1);
     console.log("Incorrect set. Score decreased. ");
@@ -173,7 +187,15 @@ function generateHint() {
             console.log("Hint: One card involved in a set is card " + (i + 1));
             // Highlight the first card in the valid set as a hint
             document
-              .getElementById("card-" + (i + 1))
+              .getElementById("card-" + i)
+              .classList.add("hint-highlight");
+
+            document
+              .getElementById("card-" + j)
+              .classList.add("hint-highlight");
+
+            document
+              .getElementById("card-" + k)
               .classList.add("hint-highlight");
             return; // Exit after finding the first valid set
           }
