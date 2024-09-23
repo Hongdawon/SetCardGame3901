@@ -80,6 +80,8 @@ function startTimer() {
   }, 1000);
 }
 
+// Starts the timer
+
 let score = 0;
 // Score Implementation
 function updateScore(points) {

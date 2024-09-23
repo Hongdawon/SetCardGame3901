@@ -65,7 +65,19 @@
           </button>
         </div>
       </div>
-    </div>
+    <!-- Timer sound -->
+
+    <audio id="tickSound" preload="auto">
+      <source src="tick.mp3" type="audio/mpeg">
+      <source src="tick.ogg" type="audio/ogg">
+    </audio>
+    
+    <!-- Timer Display -->
+
+    <div class="timer" id="timerDisplay">00:00</div>
+    <button class = "start-button" id ="start-button" onclick="startTimer();">Start!</button> 
+
+
 
     <!-- Game -->
     <div id="game" class="d-none">
