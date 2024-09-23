@@ -100,8 +100,8 @@ button:active {
   grid-template-rows: repeat(3, 150px);
   gap: 10px;
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 1060px;
+  margin: 5px auto 20px auto;
 }
 
 /* Styles for each card item */
@@ -121,14 +121,14 @@ button:active {
 /* Selected cards will have a glowing blue outline */
 .selected-item {
   background-color: #f0f8ff;
-  border: 4px solid #00bfff;
+  border: 3px solid #00bfff;
   box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
 }
 
 /* Hint-highlighted cards will have a dashed yellow outline */
 .hint-highlight {
   background-color: #ffffe0;
-  border: 4px dashed #ffeb3b;
+  border: 3px dashed #ffeb3b;
   box-shadow: 0 0 10px rgba(255, 235, 59, 0.8);
 }
 
@@ -142,4 +142,33 @@ button:active {
 .flex-container {
   display: flex;
   justify-content: center;
+}
+
+/* Helper class */
+.d-none {
+  display: none;
+}
+
+/*  Flex column class */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-input {
+  display: block;
+  width: auto;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.custom-input:focus {
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
 }

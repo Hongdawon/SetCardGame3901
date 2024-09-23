@@ -77,9 +77,6 @@ function startTimer() {
   }, 1000);
 }
 
-// Starts the timer
-startTimer();
-
 let score = 0;
 // Score Implementation
 function updateScore(points) {
@@ -206,8 +203,26 @@ function generateHint() {
   // If no set is found, log the information
   console.log("No valid sets found. ");
 }
+
 // Event listener for the hint button
 document.getElementById("hint-button").addEventListener("click", generateHint);
+
+function startGame() {
+  var player1Name = document.getElementById("player1").value;
+  var player2Name = document.getElementById("player2").value;
+  if (player1Name.length == 0) {
+    player1Name = "Player 1";
+  }
+  if (player2Name.length == 0) {
+    player2Name = "Player 2";
+  }
+  document.getElementById("start-page").classList = "d-none";
+  document.getElementById("game").classList = "";
+  console.log(`${player1Name}`);
+  console.log(`${player2Name}`);
+
+  startTimer();
+}
 
 // starting the game by dealing the initial cards
 dealCards();
