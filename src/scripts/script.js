@@ -61,6 +61,7 @@ function isSet(card1, card2, card3) {
 
 let timeRemaining = 60;
 let timerInterval;
+const tickSound = document.getElementById('tickSound');
 
 // Timer Implementation updated
 function startTimer() {
@@ -68,6 +69,8 @@ function startTimer() {
     if (timeRemaining > 0) {
       timeRemaining--;
       document.getElementById("timerDisplay").innerHTML = timeRemaining;
+// play the tick sound
+      tickSound.play();
     } else {
       // Stops Timer
       clearInterval(timerInterval);
