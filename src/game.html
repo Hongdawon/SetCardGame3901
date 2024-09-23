@@ -13,13 +13,19 @@
       <h1 class="header">Set Card Game</h1>
     </div>
 
+    <!-- Timer sound -->
+
+    <audio id="tickSound" preload="auto">
+      <source src="tick.mp3" type="audio/mpeg">
+      <source src="tick.ogg" type="audio/ogg">
+    </audio>
+    
     <!-- Timer Display -->
 
     <div class="timer" id="timerDisplay">00:00</div>
+    <button class = "start-button" id ="start-button" onclick="startTimer();">Start!</button> 
 
-<!-- Timer sound -->
 
-    <audio id="tickSound" src="tick.mp3" preload="auto"></audio>
 
     <!--Grid (4 by 3- 12 items total)-->
     <div class="grid-container">

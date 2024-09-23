@@ -81,7 +81,7 @@ function startTimer() {
 }
 
 // Starts the timer
-startTimer();
+
 
 let score = 0;
 // Score Implementation
