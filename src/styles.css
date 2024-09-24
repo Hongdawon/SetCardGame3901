@@ -76,6 +76,11 @@
   transition: background-color 0.3s ease;
 }
 
+.hint-button.disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
 button:active {
   background-color: #0d56dd;
   transform: scale(1.1);
@@ -185,4 +190,19 @@ button:active {
   color: #495057;
   background-color: #fff;
   outline: 0;
+}
+
+.left-div, .right-div {
+  width: 45%; 
+  padding: 20px;
+  background-color: lightblue; 
+  text-align: center;
+  box-sizing: border-box; 
+  display: none;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+
+.right-div {
+  background-color: lightcoral; 
 }

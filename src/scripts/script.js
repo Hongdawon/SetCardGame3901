@@ -199,6 +199,11 @@ function generateHint() {
             document
               .getElementById("card-" + k)
               .classList.add("hint-highlight");
+              
+              var button = document.getElementById('hint-button');
+              button.classList.add('disabled');
+              button.disabled = true;
+
             return; // Exit after finding the first valid set
           }
         }
@@ -207,6 +212,7 @@ function generateHint() {
   }
   // If no set is found, log the information
   console.log("No valid sets found. ");
+
 }
 
 // Event listener for the hint button
@@ -225,7 +231,16 @@ function startGame() {
   document.getElementById("game").classList = "";
   console.log(`${player1Name}`);
   console.log(`${player2Name}`);
+  
+  
 
+  // show the Name and score div
+  document.querySelector('.left-div').style.display = 'block';
+  document.querySelector('.right-div').style.display = 'block';
+
+  document.getElementById('leftN').innerHTML = player1Name;
+  document.getElementById('rightN').innerHTML = player2Name;
+  
   startTimer();
 }
 
