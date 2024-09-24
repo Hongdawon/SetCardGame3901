@@ -59,12 +59,15 @@ function isSet(card1, card2, card3) {
   );
 }
 
-let timeRemaining = 60;
+let timeRemaining = 5;
 let timerInterval;
 const tickSound = document.getElementById("tickSound");
+let roundInProgress = false;
+let roundCount = 0;
 
 // Timer Implementation updated
 function startTimer() {
+  let roundInProgress = true;
   timerInterval = setInterval(() => {
     if (timeRemaining > 0) {
       timeRemaining--;
@@ -76,6 +79,14 @@ function startTimer() {
       clearInterval(timerInterval);
       document.getElementById("timerDisplay").innerHTML = "Time's up!";
       console.log("Time's up! Round over.");
+
+      roundInProgress = false; // Mark round as complete
+      timeRemaining = 5; // Reset timer
+
+      roundCount++;
+      if (roundCount < 3) {
+        startNextRound(); // Start the next round if less than 3 rounds
+      }
     }
   }, 1000);
 }
@@ -92,6 +103,10 @@ function updateScore(points) {
 
 let visibleCards = [];
 let selectedCards = [];
+
+let player1turn = true;
+let player1score = 0;
+let player2score = 0;
 
 // Function to deal cards for initial 12 cards
 function dealCards() {
@@ -229,19 +244,17 @@ function startGame() {
   }
   document.getElementById("start-page").classList = "d-none";
   document.getElementById("game").classList = "";
-  console.log(`${player1Name}`);
-  console.log(`${player2Name}`);
-  
-  
 
-  // show the Name and score div
-  document.querySelector('.left-div').style.display = 'block';
-  document.querySelector('.right-div').style.display = 'block';
+  roundCount = 0; // Reset round count
+  startNextRound(); // Start the first round
+}
 
-  document.getElementById('leftN').innerHTML = player1Name;
-  document.getElementById('rightN').innerHTML = player2Name;
-  
-  startTimer();
+// Helper to start the next round
+function startNextRound() {
+  if (!roundInProgress) {
+    console.log(`Starting round ${roundCount + 1}`);
+    startTimer();
+  }
 }
 
 // starting the game by dealing the initial cards
