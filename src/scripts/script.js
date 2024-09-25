@@ -127,6 +127,11 @@ function updateScore(points) {
   }
 }
 
+// Function to display the updated scores for both players
+function displayScores() {
+  document.getElementById("player1Score").innerHTML = `Player 1: ${player1score}`;
+  document.getElementById("player2Score").innerHTML = `Player 2: ${player2score}`;
+}
 
 
 let visibleCards = [];
