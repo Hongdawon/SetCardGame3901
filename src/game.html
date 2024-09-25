@@ -95,6 +95,29 @@
   </div>
 
   <script src="scripts/script.js"></script>
+
+  <!-- Winner display page confetti  -->
+  <div class="flex-container">
+    <h1> You Win! Good Game</h1>
+  </div>
+  <script src="confetti.js"></script>
+  <script>
+      const start = () => {
+        setTimeout(function(){
+           confetti.start();
+        },1000); //lasts 1 second
+
+      }
+
+      const stop = () => {
+        setTimeout(function(){
+           confetti.stop();
+        },5000); //lasts 5 second
+
+      }
+      start();
+      stop();
+  </script> 
 </body>
 
 </html>
