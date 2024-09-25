@@ -64,10 +64,14 @@ let timerInterval;
 const tickSound = document.getElementById("tickSound");
 let roundInProgress = false;
 let roundCount = 0;
+let player1turn = true;
+let player1score = 0;
+let player2score = 0;
 
 // Timer Implementation updated
 function startTimer() {
   let roundInProgress = true;
+  updatePlayerTurn();
   timerInterval = setInterval(() => {
     if (timeRemaining > 0) {
       timeRemaining--;
@@ -83,6 +87,9 @@ function startTimer() {
       roundInProgress = false; // Mark round as complete
       timeRemaining = 5; // Reset timer
 
+      //Switch the player's turn 
+      switchPlayerTurn();
+
       roundCount++;
       if (roundCount < 3) {
         startNextRound(); // Start the next round if less than 3 rounds
@@ -91,22 +98,41 @@ function startTimer() {
   }, 1000);
 }
 
-// Starts the timer
-
-let score = 0;
-// Score Implementation
-function updateScore(points) {
-  score += points;
-  // May need to be altered when HTML is added
-  console.log("Score: $ {score}");
+// Function to update the displayed current player's turn
+function updatePlayerTurn() {
+  const playerTurnDisplay = document.getElementById("playerTurn");
+  if (player1turn) {
+    playerTurnDisplay.innerHTML = "Player 1's Turn";
+  } else {
+    playerTurnDisplay.innerHTML = "Player 2's Turn";
+  }
 }
+
+// Function to switch player's turn
+function switchPlayerTurn() {
+  // Toggle player turn
+  player1turn = !player1turn; 
+  updatePlayerTurn();
+}
+
+
+// Score Implementation updated for two players
+function updateScore(points) {
+  if (player1turn) {
+    player1score += points;
+    console.log(`Player 1's Score: ${player1score}`);
+  } else {
+    player2score += points;
+    console.log(`Player 2's Score: ${player2score}`);
+  }
+}
+
+
 
 let visibleCards = [];
 let selectedCards = [];
 
-let player1turn = true;
-let player1score = 0;
-let player2score = 0;
+
 
 // Function to deal cards for initial 12 cards
 function dealCards() {
