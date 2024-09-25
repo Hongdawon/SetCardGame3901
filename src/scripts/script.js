@@ -212,10 +212,12 @@ function checkAndUpdate() {
     )
   ) {
     updateScore(1);
+    displayScores();
     console.log("Correct set! Score increased. ");
     replaceCards();
   } else {
     updateScore(-1);
+    displayScores();
     console.log("Incorrect set. Score decreased. ");
   }
 }
