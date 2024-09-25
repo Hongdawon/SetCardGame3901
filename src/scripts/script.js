@@ -277,8 +277,11 @@ function startGame() {
   }
   document.getElementById("start-page").classList = "d-none";
   document.getElementById("game").classList = "";
-
-  roundCount = 0; // Reset round count
+  // Reset round, count, scores, and player turn 
+  roundCount = 0; 
+  player1score = 0;
+  player2score = 0;
+  player1turn = true;
   startNextRound(); // Start the first round
 }
 
