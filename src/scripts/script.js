@@ -59,7 +59,7 @@ function isSet(card1, card2, card3) {
   );
 }
 
-let timeRemaining = 60;
+let timeRemaining = 5;
 let timerInterval;
 const tickSound = document.getElementById("tickSound");
 let roundInProgress = false;
