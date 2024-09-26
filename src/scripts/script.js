@@ -14,17 +14,35 @@ class Card {
 const colors = ["red", "green", "purple"];
 const shapes = ["oval", "diamond", "squiggle"];
 const fills = ["empty", "shaded", "solid"];
-
 let cards = []; //stores the 81 cards used for gameplay
+let visibleCards = []; //the 12 cards on display
+let selectedCards = []; //the 0 to 3 cards the user has selected
 
-for (let i = 1; i < 4; i++) {
-  colors.forEach((color) => {
-    shapes.forEach((shape) => {
-      fills.forEach((fill) => {
-        cards.push(new Card(i, color, fill, shape));
+let roundLength = 3;
+let timerInterval;
+const tickSound = document.getElementById("tickSound");
+let roundInProgress = false;
+let turnCount = 0;
+let player1turn = true;
+let player1score = 0;
+let player2score = 0;
+let player1Name;
+let player2Name;
+let winningPlayer;
+
+//creates and shuffles a deck of the 81 set cards
+function newDeck() {
+  cards = [];
+  for (let i = 1; i < 4; i++) {
+    colors.forEach((color) => {
+      shapes.forEach((shape) => {
+        fills.forEach((fill) => {
+          cards.push(new Card(i, color, fill, shape));
+        });
       });
     });
-  });
+  }
+  shuffleArray(cards);
 }
 
 //Durstenfeld Shuffle algorithm from
@@ -37,8 +55,6 @@ function shuffleArray(array) {
     array[j] = temp;
   }
 }
-
-shuffleArray(cards);
 
 // Helper function to check if an attribute forms a valid set
 function sameOrDifferent(attr1, attr2, attr3) {
@@ -59,19 +75,9 @@ function isSet(card1, card2, card3) {
   );
 }
 
-let timeRemaining = 5;
-let timerInterval;
-const tickSound = document.getElementById("tickSound");
-let roundInProgress = false;
-let roundCount = 0;
-let player1turn = true;
-let player1score = 0;
-let player2score = 0;
-let player1Name;
-let player2Name;
-
 // Timer Implementation updated
 function startTimer() {
+  let timeRemaining = roundLength;
   let roundInProgress = true;
   var button = document.getElementById("hint-button");
   button.classList = "hint-button";
@@ -90,17 +96,30 @@ function startTimer() {
       console.log("Time's up! Round over.");
 
       roundInProgress = false; // Mark round as complete
-      timeRemaining = 5; // Reset timer
+      //timeRemaining = roundLength; // Reset timer
 
       //Switch the player's turn
       switchPlayerTurn();
 
-      roundCount++;
-      if (roundCount < 3) {
+      turnCount++;
+      if (turnCount < 6) {
         startNextRound(); // Start the next round if less than 3 rounds
+      } else {
+        showWinnerDisplay();
       }
     }
   }, 1000);
+}
+
+function showWinnerDisplay() {
+  if (player1score > player2score) {
+    winningPlayer = player1Name;
+  } else {
+    winningPlayer = player2Name;
+  }
+  document.getElementById("game").classList = "d-none";
+  document.getElementById("winner-page").classList = "";
+  document.getElementById("winning-player").innerHTML = `${winningPlayer} won.`;
 }
 
 // Function to update the displayed current player's turn
@@ -111,15 +130,14 @@ function updatePlayerTurn() {
 
   if (player1turn) {
     playerTurnDisplay.innerHTML = `${player1Name}'s Turn`;
-    gameContainer.classList.add("player1-turn");
-    gameContainer.classList.remove("player2-turn");
+    document.body.classList.add("player1-turn");
+    document.body.classList.remove("player2-turn");
   } else {
     playerTurnDisplay.innerHTML = `${player2Name}'s Turn`;
-    gameContainer.classList.add("player2-turn");
-    gameContainer.classList.remove("player1-turn");
+    document.body.classList.add("player2-turn");
+    document.body.classList.remove("player1-turn");
   }
 }
-
 
 // Function to switch player's turn
 function switchPlayerTurn() {
@@ -128,19 +146,13 @@ function switchPlayerTurn() {
   updatePlayerTurn();
 }
 
-// Score Implementation updated for two players
+// Function to display the updated scores for both players
 function updateScore(points) {
   if (player1turn) {
     player1score += points;
-    console.log(`Player 1's Score: ${player1score}`);
   } else {
     player2score += points;
-    console.log(`Player 2's Score: ${player2score}`);
   }
-}
-
-// Function to display the updated scores for both players
-function displayScores() {
   document.getElementById(
     "leftN"
   ).innerHTML = `${player1Name}: ${player1score}`;
@@ -149,11 +161,9 @@ function displayScores() {
   ).innerHTML = `${player2Name}: ${player2score}`;
 }
 
-let visibleCards = [];
-let selectedCards = [];
-
 // Function to deal cards for initial 12 cards
 function dealCards() {
+  visibleCards = [];
   for (let i = 0; i < 12; i++) {
     var card = cards.pop();
     visibleCards.push(card);
@@ -163,6 +173,13 @@ function dealCards() {
       card.imgname() +
       `.png" />`;
   }
+}
+
+function clearSelections() {
+  selectCards = [];
+  selectedCards.forEach((cardNum) => {
+    document.getElementById("card-" + cardNum).classList = "grid-item";
+  });
 }
 
 //Function to handle card click
@@ -196,23 +213,23 @@ function replaceCards() {
   // Remove old cards and add three new cards from the deck if available
   // After fade-out (0.5s), replace the cards
   setTimeout(() => {
-  for (let i = 0; i < 3; i++) {
-    if (cards.length > 0) {
-      var newCard = cards.pop();
-      var index = selectedCards[i];
-      //put images on page
-      document.getElementById("card-" + index).innerHTML =
-        `
+    for (let i = 0; i < 3; i++) {
+      if (cards.length > 0) {
+        var newCard = cards.pop();
+        var index = selectedCards[i];
+        //put images on page
+        document.getElementById("card-" + index).innerHTML =
+          `
       <img class="card-img" src="../img/` +
-        newCard.imgname() +
-        `.png" />`;
-      //remove old card from visible cards and add new at same index
-      visibleCards.splice(selectedCards[i], 1, newCard);
-      //remove select class
-      document.getElementById("card-" + index).classList = "grid-item";
+          newCard.imgname() +
+          `.png" />`;
+        //remove old card from visible cards and add new at same index
+        visibleCards.splice(selectedCards[i], 1, newCard);
+        //remove select class
+        document.getElementById("card-" + index).classList = "grid-item";
+      }
     }
-  }
-  selectedCards = [];
+    selectedCards = [];
   }, 500); // set it at 500 to match the css function
   console.log("New cards dealt after set identified: ");
   visibleCards.forEach((card, index) =>
@@ -235,7 +252,6 @@ function checkAndUpdate() {
     });
     setTimeout(() => {
       updateScore(1);
-      displayScores();
       replaceCards();
     }, 500); // Delay to match the transition duration
   } else {
@@ -243,15 +259,13 @@ function checkAndUpdate() {
       document.getElementById("card-" + cardNum).classList.add("wrong-set");
     });
     setTimeout(() => {
-      updateScore(-1);
-      displayScores();
+      updateScore(0);
       selectedCards.forEach((cardNum) => {
         document.getElementById("card-" + cardNum).classList = "grid-item";
       });
       selectedCards = [];
     }, 150);
   }
-
 }
 
 // Generates a hint by finding a valid set
@@ -314,8 +328,6 @@ function startGame() {
 
   document.getElementById("leftN").innerHTML = `${player1Name}: 0`;
   document.getElementById("rightN").innerHTML = `${player2Name}: 0`;
-
-  roundCount = 0; // Reset round count
   player1turn = true; // Player 1 starts the game
   player1score = 0; // Reset player 1's score
   player2score = 0; // Reset player 2's score
@@ -329,10 +341,8 @@ function startGame() {
 // Helper to start the next round
 function startNextRound() {
   if (!roundInProgress) {
-    console.log(`Starting round ${roundCount + 1}`);
+    newDeck();
+    dealCards();
     startTimer();
   }
 }
-
-// starting the game by dealing the initial cards
-dealCards();
