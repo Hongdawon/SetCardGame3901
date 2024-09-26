@@ -224,7 +224,15 @@ function checkAndUpdate() {
     updateScore(-1);
     displayScores();
     console.log("Incorrect set. Score decreased. ");
+
+    //changing the selected cards that are wrong to red
+    selectedCards.forEach(cardIndex => {
+      const cardElement = document.getElementById(`card-${cardIndex}`);
+      cardElement.classList.add("incorrect-set");
+
+    });
   }
+
 }
 
 // Generates a hint by finding a valid set
