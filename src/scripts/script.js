@@ -59,7 +59,7 @@ function isSet(card1, card2, card3) {
   );
 }
 
-let timeRemaining = 5;
+let timeRemaining = 30;
 let timerInterval;
 const tickSound = document.getElementById("tickSound");
 let roundInProgress = false;
@@ -85,7 +85,7 @@ function startTimer() {
       console.log("Time's up! Round over.");
 
       roundInProgress = false; // Mark round as complete
-      timeRemaining = 5; // Reset timer
+      timeRemaining = 30; // Reset timer
 
       //Switch the player's turn 
       switchPlayerTurn();
@@ -284,6 +284,13 @@ function startGame() {
   document.getElementById("rightN").innerHTML = player2Name;
 
   roundCount = 0; // Reset round count
+  player1turn = true; // Player 1 starts the game
+  player1score = 0;   // Reset player 1's score
+  player2score = 0;   // Reset player 2's score
+
+  // Display the current player's turn at the start of the game
+  updatePlayerTurn();
+
   startNextRound(); // Start the first round
 }
 

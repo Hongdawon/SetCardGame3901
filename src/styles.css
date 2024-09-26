@@ -33,6 +33,26 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Timer and Player Turn Side by Side */
+.timer-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  margin-bottom: 20px;     
+}
+
+/* Adjust player turn style to fit next to the timer */
+#playerTurn {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-left: 20px; /* Adds space between the timer and the player's turn */
+  padding: 10px;
+  background-color: #2a0a7f;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Button styles */
 .set-button {
   background-color: #fc5757;
