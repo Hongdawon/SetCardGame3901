@@ -1,126 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game of Set</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game of Set</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-  <!-- Heading Banner -->
-  <div>
-    <h1 class="header">Set Card Game</h1>
-  </div>
-
-  <!-- Start Page -->
-  <div id="start-page">
-    <!-- Set Card Game Instruction -->
-    <section class="ins-section">
-      <h2>Set Card Game Instructions</h2>
-      <div class="ins-text">
-        This game consists of three 60 second rounds for each player.
+  <body>
+    <!-- Start Page -->
+    <div id="start-page">
+      <!-- Heading Banner -->
+      <div>
+        <h1 class="header">Set Card Game</h1>
       </div>
-      <div class="ins-text">
-        The goal each round is to select as many 3-card "Sets" as possible.
-      </div>
-      <div class="ins-text">
-        A "Set" consists of 3 cards where each feature (color, shape, number,
-        and shading) is either the same on all cards or different on each.
-      </div>
-      <div class="ins-text">
-        If a valid set is found, you earn points. If not, try again! 
-      </div>
-      <div class = "ins-text">
-        And finally, the Hint button can only be used once.
-      </div>
-    </section>
 
-    <div class="flex-container">
-      <div class="flex-column">
-        <label for="player1" style="margin-bottom: 5px; font-weight: bold">Player 1:</label>
-        <input type="text" placeholder="Name" class="custom-input" id="player1" style="margin-bottom: 10px" />
+      <!-- Set Card Game Instruction -->
+      <section class="ins-section">
+        <h2>Set Card Game Instructions</h2>
+        <div class="ins-text">
+          This game consists of three 60 second rounds for each player.
+        </div>
+        <div class="ins-text">
+          The goal each round is to select as many 3-card "Sets" as possible.
+        </div>
+        <div class="ins-text">
+          A "Set" consists of 3 cards where each feature (color, shape, number,
+          and shading) is either the same on all cards or different on each.
+        </div>
+        <div class="ins-text">
+          If a valid set is found, you earn points. If not, try again!
+        </div>
+        <div class="ins-text">
+          And finally, the Hint button can only be used once.
+        </div>
+      </section>
 
-        <label for="player1" style="margin-bottom: 5px; font-weight: bold"><b>Player 2:</b></label>
-        <input type="text" placeholder="Name" class="custom-input" id="player2" />
+      <div class="flex-container">
+        <div class="flex-column">
+          <label for="player1" style="margin-bottom: 5px; font-weight: bold"
+            >Player 1:</label
+          >
+          <input
+            type="text"
+            placeholder="Name"
+            class="custom-input"
+            id="player1"
+            style="margin-bottom: 10px"
+          />
 
-        <button id="button" class="hint-button" style="width: auto" onclick="startGame()">
-          Start Game!
+          <label for="player1" style="margin-bottom: 5px; font-weight: bold"
+            ><b>Player 2:</b></label
+          >
+          <input
+            type="text"
+            placeholder="Name"
+            class="custom-input"
+            id="player2"
+          />
+
+          <button
+            id="button"
+            class="hint-button"
+            style="width: auto"
+            onclick="startGame()"
+          >
+            Start Game!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game -->
+    <div id="game" class="d-none">
+      <!-- Timer Display -->
+      <div class="timer" id="timerDisplay">00:00</div>
+
+      <!-- Player Turn Display -->
+      <div id="playerTurn">Player 1's Turn</div>
+
+      <!--Grid (4 by 3- 12 items total)-->
+      <div class="grid-container">
+        <div id="card-0" class="grid-item" onclick="selectCard(0)"></div>
+        <div id="card-1" class="grid-item" onclick="selectCard(1)"></div>
+        <div id="card-2" class="grid-item" onclick="selectCard(2)"></div>
+        <div id="card-3" class="grid-item" onclick="selectCard(3)"></div>
+        <div id="card-4" class="grid-item" onclick="selectCard(4)"></div>
+        <div id="card-5" class="grid-item" onclick="selectCard(5)"></div>
+        <div id="card-6" class="grid-item" onclick="selectCard(6)"></div>
+        <div id="card-7" class="grid-item" onclick="selectCard(7)"></div>
+        <div id="card-8" class="grid-item" onclick="selectCard(8)"></div>
+        <div id="card-9" class="grid-item" onclick="selectCard(9)"></div>
+        <div id="card-10" class="grid-item" onclick="selectCard(10)"></div>
+        <div id="card-11" class="grid-item" onclick="selectCard(11)"></div>
+      </div>
+
+      <!-- Button  -->
+      <div class="flex-container">
+        <button id="button" class="set-button" onclick="checkAndUpdate()">
+          Set!
         </button>
+        <button id="hint-button" class="hint-button">Hint?</button>
       </div>
-    </div>
-  </div>
 
-  <!-- Game -->
-  <div id="game" class="d-none">
-    <!-- Timer sound -->
-    <audio id="tickSound" preload="auto">
-      <source src="tick.mp3" type="audio/mpeg" />
-      <source src="tick.ogg" type="audio/ogg" />
-    </audio>
+      <!-- Name and score  -->
+      <div class="flex-container">
+        <div class="left-div" id="leftN"></div>
+        <div class="right-div" id="rightN"></div>
+      </div>
 
-    <!-- Timer Display -->
-    <div class="timer" id="timerDisplay">00:00</div>
-
-    <!-- Player Turn Display -->
-    <div id="playerTurn">Player 1's Turn</div> 
-
-    <!--Grid (4 by 3- 12 items total)-->
-    <div class="grid-container">
-      <div id="card-0" class="grid-item" onclick="selectCard(0)"></div>
-      <div id="card-1" class="grid-item" onclick="selectCard(1)"></div>
-      <div id="card-2" class="grid-item" onclick="selectCard(2)"></div>
-      <div id="card-3" class="grid-item" onclick="selectCard(3)"></div>
-      <div id="card-4" class="grid-item" onclick="selectCard(4)"></div>
-      <div id="card-5" class="grid-item" onclick="selectCard(5)"></div>
-      <div id="card-6" class="grid-item" onclick="selectCard(6)"></div>
-      <div id="card-7" class="grid-item" onclick="selectCard(7)"></div>
-      <div id="card-8" class="grid-item" onclick="selectCard(8)"></div>
-      <div id="card-9" class="grid-item" onclick="selectCard(9)"></div>
-      <div id="card-10" class="grid-item" onclick="selectCard(10)"></div>
-      <div id="card-11" class="grid-item" onclick="selectCard(11)"></div>
+      <!-- Timer sound -->
+      <audio id="tickSound" preload="auto">
+        <source src="tick.mp3" type="audio/mpeg" />
+        <source src="tick.ogg" type="audio/ogg" />
+      </audio>
     </div>
 
-    <!-- Button  -->
-    <div class="flex-container">
-      <button id="button" class="set-button" onclick="checkAndUpdate()">
-        Set!
-      </button>
-      <button id="hint-button" class="hint-button">Hint?</button>
+    <script src="scripts/script.js"></script>
+
+    <!-- Winner display page confetti  -->
+    <!-- <div class="flex-container">
+      <h1>You Win! Good Game</h1>
     </div>
-  </div>
-
-  <!-- Name and score  -->
-  <div class="flex-container">
-    <div class="left-div" id="leftN"></div>
-    <div class="right-div" id="rightN"></div>
-  </div>
-
-  <script src="scripts/script.js"></script>
-
-  <!-- Winner display page confetti  -->
-  <div class="flex-container">
-    <h1> You Win! Good Game</h1>
-  </div>
-  <script src="confetti.js"></script>
-  <script>
+    <script src="confetti.js"></script>
+    <script>
       const start = () => {
-        setTimeout(function(){
-           confetti.start();
-        },1000); //lasts 1 second
-
-      }
+        setTimeout(function () {
+          confetti.start();
+        }, 1000); //lasts 1 second
+      };
 
       const stop = () => {
-        setTimeout(function(){
-           confetti.stop();
-        },5000); //lasts 5 second
-
-      }
+        setTimeout(function () {
+          confetti.stop();
+        }, 5000); //lasts 5 second
+      };
       start();
       stop();
-  </script> 
-</body>
-
+    </script> -->
+  </body>
 </html>

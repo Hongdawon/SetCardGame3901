@@ -28,7 +28,7 @@
   padding: 10px;
   background-color: #1d0468;
   border-radius: 10px;
-  max-width: 100px;
+  max-width: 200px;
   font-weight: normal;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -36,9 +36,9 @@
 /* Timer and Player Turn Side by Side */
 .timer-container {
   display: flex;
-  justify-content: center; 
-  align-items: center;    
-  margin-bottom: 20px;     
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 /* Adjust player turn style to fit next to the timer */
@@ -212,40 +212,40 @@ button:active {
   outline: 0;
 }
 
-.left-div, .right-div {
-  width: 45%; 
+.left-div,
+.right-div {
+  width: 45%;
   padding: 20px;
-  background-color: lightblue; 
+  background-color: lightblue;
   text-align: center;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   display: none;
   border: 2px solid #000;
   border-radius: 10px;
 }
 
 .right-div {
-  background-color: lightcoral; 
+  background-color: lightcoral;
 }
 
 /* Flex container for confetti */
-.body{
-   margin:0;
-   padding: 0;
-   font-family: 'Courier New', Courier, monospace;
+.body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
 }
- html,
- .body{
-width: 100%;
-height: 100%;
-background-color: #ced4da;
-color: #13fa60;
-display: flex;
-align-items: center;
-justify-content: center;
- }
+html,
+.body {
+  width: 100%;
+  height: 100%;
+  background-color: #ced4da;
+  /* color: #13fa60; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
- .h1{
+.h1 {
   font-size: 1.5rem;
   text-align: center;
- }
- 
+}

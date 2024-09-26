@@ -59,7 +59,7 @@ function isSet(card1, card2, card3) {
   );
 }
 
-let timeRemaining = 30;
+let timeRemaining = 5;
 let timerInterval;
 const tickSound = document.getElementById("tickSound");
 let roundInProgress = false;
@@ -67,10 +67,15 @@ let roundCount = 0;
 let player1turn = true;
 let player1score = 0;
 let player2score = 0;
+let player1Name;
+let player2Name;
 
 // Timer Implementation updated
 function startTimer() {
   let roundInProgress = true;
+  var button = document.getElementById("hint-button");
+  button.classList = "hint-button";
+  button.disabled = false;
   updatePlayerTurn();
   timerInterval = setInterval(() => {
     if (timeRemaining > 0) {
@@ -85,9 +90,9 @@ function startTimer() {
       console.log("Time's up! Round over.");
 
       roundInProgress = false; // Mark round as complete
-      timeRemaining = 30; // Reset timer
+      timeRemaining = 5; // Reset timer
 
-      //Switch the player's turn 
+      //Switch the player's turn
       switchPlayerTurn();
 
       roundCount++;
@@ -102,19 +107,18 @@ function startTimer() {
 function updatePlayerTurn() {
   const playerTurnDisplay = document.getElementById("playerTurn");
   if (player1turn) {
-    playerTurnDisplay.innerHTML = "Player 1's Turn";
+    playerTurnDisplay.innerHTML = `${player1Name}'s Turn`;
   } else {
-    playerTurnDisplay.innerHTML = "Player 2's Turn";
+    playerTurnDisplay.innerHTML = `${player2Name}'s Turn`;
   }
 }
 
 // Function to switch player's turn
 function switchPlayerTurn() {
   // Toggle player turn
-  player1turn = !player1turn; 
+  player1turn = !player1turn;
   updatePlayerTurn();
 }
-
 
 // Score Implementation updated for two players
 function updateScore(points) {
@@ -129,15 +133,16 @@ function updateScore(points) {
 
 // Function to display the updated scores for both players
 function displayScores() {
-  document.getElementById("player1Score").innerHTML = `Player 1: ${player1score}`;
-  document.getElementById("player2Score").innerHTML = `Player 2: ${player2score}`;
+  document.getElementById(
+    "leftN"
+  ).innerHTML = `${player1Name}: ${player1score}`;
+  document.getElementById(
+    "rightN"
+  ).innerHTML = `${player2Name}: ${player2score}`;
 }
-
 
 let visibleCards = [];
 let selectedCards = [];
-
-
 
 // Function to deal cards for initial 12 cards
 function dealCards() {
@@ -266,8 +271,8 @@ function generateHint() {
 document.getElementById("hint-button").addEventListener("click", generateHint);
 
 function startGame() {
-  var player1Name = document.getElementById("player1").value;
-  var player2Name = document.getElementById("player2").value;
+  player1Name = document.getElementById("player1").value;
+  player2Name = document.getElementById("player2").value;
   if (player1Name.length == 0) {
     player1Name = "Player 1";
   }
@@ -280,13 +285,13 @@ function startGame() {
   document.querySelector(".left-div").style.display = "block";
   document.querySelector(".right-div").style.display = "block";
 
-  document.getElementById("leftN").innerHTML = player1Name;
-  document.getElementById("rightN").innerHTML = player2Name;
+  document.getElementById("leftN").innerHTML = `${player1Name}: 0`;
+  document.getElementById("rightN").innerHTML = `${player2Name}: 0`;
 
   roundCount = 0; // Reset round count
   player1turn = true; // Player 1 starts the game
-  player1score = 0;   // Reset player 1's score
-  player2score = 0;   // Reset player 2's score
+  player1score = 0; // Reset player 1's score
+  player2score = 0; // Reset player 2's score
 
   // Display the current player's turn at the start of the game
   updatePlayerTurn();
