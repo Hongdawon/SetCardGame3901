@@ -104,14 +104,22 @@ function startTimer() {
 }
 
 // Function to update the displayed current player's turn
+// Function to update the displayed current player's turn
 function updatePlayerTurn() {
   const playerTurnDisplay = document.getElementById("playerTurn");
+  const gameContainer = document.getElementById("game");
+
   if (player1turn) {
     playerTurnDisplay.innerHTML = `${player1Name}'s Turn`;
+    gameContainer.classList.add("player1-turn");
+    gameContainer.classList.remove("player2-turn");
   } else {
     playerTurnDisplay.innerHTML = `${player2Name}'s Turn`;
+    gameContainer.classList.add("player2-turn");
+    gameContainer.classList.remove("player1-turn");
   }
 }
+
 
 // Function to switch player's turn
 function switchPlayerTurn() {
@@ -181,7 +189,13 @@ function selectCard(cardNum) {
 
 // Function to replace the identified set with new cards
 function replaceCards() {
+  // Fade out the selected cards
+  selectedCards.forEach((cardNum) => {
+    document.getElementById("card-" + cardNum).classList.add("fade-out");
+  });
   // Remove old cards and add three new cards from the deck if available
+  // After fade-out (0.5s), replace the cards
+  setTimeout(() => {
   for (let i = 0; i < 3; i++) {
     if (cards.length > 0) {
       var newCard = cards.pop();
@@ -199,7 +213,7 @@ function replaceCards() {
     }
   }
   selectedCards = [];
-
+  }, 500); // set it at 500 to match the css function
   console.log("New cards dealt after set identified: ");
   visibleCards.forEach((card, index) =>
     console.log(`${index + 1}: ${card.imgname()}`)
@@ -216,21 +230,26 @@ function checkAndUpdate() {
       visibleCards[selectedCards[2]]
     )
   ) {
-    updateScore(1);
-    displayScores();
-    console.log("Correct set! Score increased. ");
-    replaceCards();
-  } else {
-    updateScore(-1);
-    displayScores();
-    console.log("Incorrect set. Score decreased. ");
-
-    //changing the selected cards that are wrong to red
-    selectedCards.forEach(cardIndex => {
-      const cardElement = document.getElementById(`card-${cardIndex}`);
-      cardElement.classList.add("incorrect-set");
-
+    selectedCards.forEach((cardNum) => {
+      document.getElementById("card-" + cardNum).classList.add("correct-set");
     });
+    setTimeout(() => {
+      updateScore(1);
+      displayScores();
+      replaceCards();
+    }, 500); // Delay to match the transition duration
+  } else {
+    selectedCards.forEach((cardNum) => {
+      document.getElementById("card-" + cardNum).classList.add("wrong-set");
+    });
+    setTimeout(() => {
+      updateScore(-1);
+      displayScores();
+      selectedCards.forEach((cardNum) => {
+        document.getElementById("card-" + cardNum).classList = "grid-item";
+      });
+      selectedCards = [];
+    }, 150);
   }
 
 }

@@ -1,3 +1,16 @@
+/* Ensure the background covers the whole screen */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ced4da; /* Background color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 /* General styles for the heading */
 .header {
   background: linear-gradient(135deg, #20165a, #8382eb);
@@ -177,10 +190,56 @@ button:active {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Fade-out effect for cards */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
 /* Flex container for buttons */
 .flex-container {
   display: flex;
   justify-content: center;
+}
+
+/* Correct set turns green */
+.correct-set {
+  background-color: #cdffcd; /* Very light tint */
+  border: 3px solid #4CAF50; /* green border */
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.8); /* Green glow */
+  transition: background-color 0.5s ease-out, box-shadow 0.5s ease-out;
+}
+
+/* Wrong set turns red */
+.wrong-set {
+  background-color: #ffe6e6; /* Very light tint */
+  border: 3px solid #FF4F4F; /* red border */
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.8); /* Red glow */
+  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+/* Player name styles */
+.player-name {
+  font-size: 1.5rem;
+  color: #000000;
+  margin: 0 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Active player name will be bold and bright */
+.active-player {
+  font-weight: bold;
+  color: #ffcc00; /* Bright yellow for active player */
+}
+
+/* Blue tint for Player 1's turn */
+.player1-turn {
+  background-color: rgba(0, 0, 255, 0.1); /* Light blue tint */
+}
+
+/* Red tint for Player 2's turn */
+.player2-turn {
+  background-color: rgba(255, 0, 0, 0.1); /* Light red tint */
 }
 
 /* Helper class */
@@ -248,9 +307,4 @@ html,
 .h1 {
   font-size: 1.5rem;
   text-align: center;
-}
-/* incorrect set */
-.incorrect-set {
-  background-color: red;
-  transition: background-color 0.5s ease;
 }
