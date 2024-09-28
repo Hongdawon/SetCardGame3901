@@ -111,26 +111,43 @@ function startTimer() {
   }, 1000);
 }
 
+function startConfetti() {
+  setTimeout(function () {
+    confetti({
+      particleCount: 200,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }, 1000); // 1초 후 시작
+}
+
+function stopConfetti() {
+  setTimeout(function () {
+    confetti.stop();
+  }, 5000); 
+}
+
+
 function showWinnerDisplay() {
   if (player1score > player2score) {
     winningPlayer = player1Name;
   } else {
     winningPlayer = player2Name;
   }
-  document.getElementById("game").classList = "d-none";
-  document.getElementById("winner-page").classList = "";
-  document.getElementById("winning-player").innerHTML = `${winningPlayer} won.`;
 
-  //trigger the confetti effect
-  confetti({
-    particleCount: 200;
-    spread: 70;
-    origin: { y: 0.6}
-  });
-  }
+  
+  document.getElementById("game").classList.add("d-none");
+  document.getElementById("winning-header").classList.remove("d-none");
+  document.getElementById("winner-page").classList.remove("d-none");
+  document.getElementById("winning-player").innerHTML = `${winningPlayer} won!`;
+
+  
+  startConfetti();
+  stopConfetti();
+}
 
 
-// Function to update the displayed current player's turn
+
 // Function to update the displayed current player's turn
 function updatePlayerTurn() {
   const playerTurnDisplay = document.getElementById("playerTurn");
