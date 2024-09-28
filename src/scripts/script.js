@@ -120,7 +120,15 @@ function showWinnerDisplay() {
   document.getElementById("game").classList = "d-none";
   document.getElementById("winner-page").classList = "";
   document.getElementById("winning-player").innerHTML = `${winningPlayer} won.`;
-}
+
+  //trigger the confetti effect
+  confetti({
+    particleCount: 200;
+    spread: 70;
+    origin: { y: 0.6}
+  });
+  }
+
 
 // Function to update the displayed current player's turn
 // Function to update the displayed current player's turn
