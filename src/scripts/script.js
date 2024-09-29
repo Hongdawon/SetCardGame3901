@@ -20,7 +20,7 @@ let cards = []; //stores the 81 cards used for gameplay
 let visibleCards = []; //the 12 cards on display
 let selectedCards = []; //the 0 to 3 cards the user has selected
 
-let roundLength = 3;
+let roundLength = 31;
 let timerInterval;
 const tickSound = document.getElementById("tickSound");
 let roundInProgress = false;
