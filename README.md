@@ -45,7 +45,7 @@ There will be 3 rounds with 2 tries eachg
 A valid set consists of three cards where each feature (color, shape, number, and shading) is either the same or completely different on all three cards.
 Click on three cards to form a set. If correct, they will be highlighted in green; otherwise, they will flash red.
 
-## Winning the Game:
+## 🏆 Winning the Game:
 
 The player with the most valid sets after three rounds wins.
 
