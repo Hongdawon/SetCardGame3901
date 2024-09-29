@@ -118,7 +118,7 @@ function startConfetti() {
     confetti({
       particleCount: 200,
       spread: 70,
-      origin: { y: 0.6 }
+      origin: { y: 0.6 },
     });
   }, 1000); // 1초 후 시작
 }
@@ -127,7 +127,7 @@ function startConfetti() {
 function stopConfetti() {
   setTimeout(function () {
     confetti.stop();
-  }, 5000); 
+  }, 5000);
 }
 
 // Function to display the winning player's name
@@ -138,21 +138,20 @@ function showWinnerDisplay() {
     winningPlayer = player2Name;
   }
 
-  
   document.getElementById("game").classList.add("d-none");
   document.getElementById("winning-header").classList.remove("d-none");
   document.getElementById("winner-page").classList.remove("d-none");
   document.getElementById("winning-player").innerHTML = `${winningPlayer} won!`;
-if(player1score == player2score){
-  document.getElementById("winning-header").classList.add("d-none");
-  document.getElementById("winning-player").innerHTML = `Draw! Try agiain next time! What a big match!`;
-}
-  
+  if (player1score == player2score) {
+    document.getElementById("winning-header").classList.add("d-none");
+    document.getElementById(
+      "winning-player"
+    ).innerHTML = `Draw! Try agiain next time! What a big match!`;
+  }
+
   startConfetti();
   stopConfetti();
 }
-
-
 
 // Function to update the displayed current player's turn
 function updatePlayerTurn() {
@@ -208,10 +207,10 @@ function dealCards() {
 
 // Function to clear the player's selected cards
 function clearSelections() {
-  selectCards = [];
-  selectedCards.forEach((cardNum) => {
-    document.getElementById("card-" + cardNum).classList = "grid-item";
-  });
+  selectedCards = [];
+  for (let i = 0; i < 12; i++) {
+    document.getElementById("card-" + i).classList = "grid-item";
+  }
 }
 
 //Function to handle card click
@@ -375,6 +374,7 @@ function startNextRound() {
   if (!roundInProgress) {
     newDeck();
     dealCards();
+    clearSelections();
     startTimer();
   }
 }

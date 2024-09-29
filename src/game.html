@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game of Set</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src=" "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   </head>
 
   <body>
@@ -115,19 +114,14 @@
         <source src="tick.mp3" type="audio/mpeg" />
         <source src="tick.ogg" type="audio/ogg" />
       </audio>
+    </div>    
+
+    <!-- Winner display page confetti -->
+    <div id="winner-page" class="d-none header">
+      <h1 id = "winning-header" class = "d-none win-text">You Win! Good Game</div>
+      <h1 id="winning-player"></h1>
     </div>
 
-  
-
-    
-
-   <!-- Winner display page confetti -->
-<div id="winner-page" class="d-none header">
-  <h1 id = "winning-header" class = "d-none win-text">You Win! Good Game</div>
-  <h1 id="winning-player"></h1>
-</div>
-
-<script src="confetti.js"></script>
-<script src="scripts/script.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
