@@ -24,12 +24,15 @@ Follow these steps to get the project up and running on your local machine:
 
 Open the index.html file in your preferred browser.
 If you encounter file path issues or load failures, make sure all file paths are correctly relative to your root directory.
-Troubleshooting Installation:
-    Problem: Images or cards are not displaying.
-    Solution: Check the paths of images in the scripts folder. Ensure that the img folder is correctly placed in the project root.
 
-    Problem: Timer or game logic not functioning.
-    Solution: Verify that all JavaScript files are linked properly in index.html. Console errors can provide hints on missing references.
+
+**Troubleshooting Installation:**
+
+Problem: Images or cards are not displaying.
+Solution: Check the paths of images in the scripts folder. Ensure that the img folder is correctly placed in the project root.
+
+Problem: Timer or game logic not functioning.
+Solution: Verify that all JavaScript files are linked properly in index.html. Console errors can provide hints on missing references.
     
 ## 🎮 How to Play
 
