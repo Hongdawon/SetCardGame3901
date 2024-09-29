@@ -140,7 +140,10 @@ function showWinnerDisplay() {
   document.getElementById("winning-header").classList.remove("d-none");
   document.getElementById("winner-page").classList.remove("d-none");
   document.getElementById("winning-player").innerHTML = `${winningPlayer} won!`;
-
+if(player1score == player2score){
+  document.getElementById("winning-header").classList.add("d-none");
+  document.getElementById("winning-player").innerHTML = `Draw! Try agiain next time! What a big match!`;
+}
   
   startConfetti();
   stopConfetti();
