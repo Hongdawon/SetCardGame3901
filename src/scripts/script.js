@@ -1,3 +1,4 @@
+// Class representing a card in the game
 class Card {
   constructor(number, color, fill, shape) {
     this.number = number;
@@ -6,6 +7,7 @@ class Card {
     this.shape = shape;
   }
 
+  // Method to generate the image name for the card based on its attributes
   imgname() {
     return this.number + this.fill + this.color + this.shape;
   }
@@ -121,13 +123,14 @@ function startConfetti() {
   }, 1000); // 1초 후 시작
 }
 
+// Function to start the confetti animation when a player wins
 function stopConfetti() {
   setTimeout(function () {
     confetti.stop();
   }, 5000); 
 }
 
-
+// Function to display the winning player's name
 function showWinnerDisplay() {
   if (player1score > player2score) {
     winningPlayer = player1Name;
@@ -203,6 +206,7 @@ function dealCards() {
   }
 }
 
+// Function to clear the player's selected cards
 function clearSelections() {
   selectCards = [];
   selectedCards.forEach((cardNum) => {
